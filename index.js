@@ -1,4 +1,5 @@
-import { Player } from "textalive-app-api";
+import { Player } from "https://unpkg.com/textalive-app-api/dist/index.js";
+
 
 // Unity に歌詞を送る関数
 const animateWord = function (now, unit) {
