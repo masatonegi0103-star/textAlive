@@ -1,4 +1,6 @@
-import { Player } from "https://unpkg.com/textalive-app-api/dist/index.js";
+// import は削除して、代わりにグローバル変数を使用
+const { Player } = TextAliveApp;
+
 
 
 // Unity に歌詞を送る関数
