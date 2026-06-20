@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8">
-    <title>Unity WebGL Player</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <title>Unity WebGL Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Unity が自動で埋め込む部分 -->
-    {{UNITY_WEBGL_LOADER_GLUE}}
+  <!-- Unity が自動で埋め込む部分 -->
+  {{UNITY_WEBGL_LOADER_GLUE}}
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: black !important;
+    }
+  </style>
 </head>
 
-<body style="margin:0; padding:0; overflow:hidden; background:black;">
-    <div id="unity-container" style="width:100vw; height:100vh;">
-        <canvas id="unity-canvas"></canvas>
-    </div>
+<body>
+  <div id="unity-container" style="width:100vw; height:100vh;">
+    <canvas id="unity-canvas"></canvas>
+  </div>
 
-    <!-- Unity が自動で埋め込む部分 -->
-    {{UNITY_WEBGL_BUILD_LOADER}}
+  <!-- Unity が自動で埋め込む部分 -->
+  {{UNITY_WEBGL_BUILD_LOADER}}
 
-    <!-- TextAlive -->
+  <!-- TextAlive -->
   <script src="https://unpkg.com/textalive-app-api/dist/index.js"></script>
-  <script>
-    const player = new TextAliveApp.Player({
-      app: { token: "YWRByOT0TY6ysgdW" } // ← トークンは文字列として "" で囲む
-    });
-
-    player.addListener({
-      onAppReady: () => {
-        player.createFromSongUrl("https://piapro.jp/t/xxxx");
-      },
-      onTimeUpdate: (position) => {
-        const char = player.video.findChar(position);
-        if (char && char.text) {
-          SendMessage("LyricsReceiver", "OnLyricsUpdate", char.text);
-        }
-      }
-    });
-  </script>
+  <script type="module" src="./index.js"></script>
 </body>
 </html>
+
