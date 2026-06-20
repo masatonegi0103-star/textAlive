@@ -14,7 +14,7 @@ const animateWord = function (now, unit) {
 // TextAlive Player を作成
 const player = new Player({
   app: {
-    token: "YWRByOT0TY6ysgdW",
+    token: "n5AtEkOImaNDVmCm",
   },
   mediaElement: null, // Unity では不要
 });
