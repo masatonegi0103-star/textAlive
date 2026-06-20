@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <title>Unity WebGL Player</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://unpkg.com/textalive-app-api/dist/index.js"></script>
 
-  <!-- Unity が自動で埋め込む部分 -->
-  {{UNITY_WEBGL_LOADER_GLUE}}
+<script>
+  let unityInstance;
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: black !important;
-    }
-  </style>
-</head>
+  // Unity WebGL がロードされたらインスタンスを保持
+  function onUnityLoaded(instance) {
+    unityInstance = instance;
+  }
+</script>
 
-<body>
-  <div id="unity-container" style="width:100vw; height:100vh;">
-    <canvas id="unity-canvas"></canvas>
-  </div>
+<!-- Unity WebGL Loader -->
+<script src="Build/UnityLoader.js"></script>
+<script>
+  createUnityInstance(document.querySelector("#unity-canvas"), {
+    dataUrl: "Build/build.data",
+    frameworkUrl: "Build/build.framework.js",
+    codeUrl: "Build/build.wasm",
+  }).then(onUnityLoaded);
+</script>
 
-  <!-- Unity が自動で埋め込む部分 -->
-  {{UNITY_WEBGL_BUILD_LOADER}}
-
-  <!-- TextAlive -->
-  <script src="https://unpkg.com/textalive-app-api/dist/index.js"></script>
-  <script type="module" src="./index.js"></script>
-</body>
-</html>
-
+<script src="./textalive.js"></script>
